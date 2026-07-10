@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Hybrid Attendance System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">HAS</div>
+      <span>Attendance</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="student.html" class="nav-item active">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="../Session/session.html" class="nav-item" id="joinNavLink">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+        Join Session
+      </a>
+      <a href="./attendance_history.html" class="nav-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        History
+      </a>
+    </nav>
+    <button class="logout-btn" onclick="window.location.href='/Login-form/Login.html'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Logout
+    </button>
+  </div>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuBtn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <h2>Student Dashboard</h2>
+          <p id="curDate"></p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div id="activeSessionAlert" class="session-alert" style="display:none">
+          <span class="pulse-dot"></span>
+          <span id="activeSessionText">Session Active</span>
+          <button onclick="window.location.href='../Session/session.html'" class="join-now-btn">Join Now</button>
+        </div>
+        <div class="avatar">TK</div>
+      </div>
+    </header>
+
+    <div class="content-body">
+
+      <!-- Profile + stats -->
+      <div class="top-grid">
+        <div class="card profile-card">
+          <div class="profile-banner"></div>
+          <div class="profile-info">
+            <div class="profile-avatar">TK</div>
+            <div>
+              <h3>Talha Khan</h3>
+              <p>Roll No: BSCS-2021-1245</p>
+            </div>
+          </div>
+          <div class="profile-stats">
+            <div class="p-stat"><strong>6</strong><span>Subjects</span></div>
+            <div class="p-stat"><strong id="pDays">120</strong><span>Present</span></div>
+            <div class="p-stat"><strong id="aDays">10</strong><span>Absent</span></div>
+          </div>
+        </div>
+
+        <div class="card attendance-ring-card">
+          <h3>Attendance Rate</h3>
+          <div class="ring-wrapper">
+            <svg viewBox="0 0 120 120" class="ring-svg">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ringGrad)" stroke-width="12"
+                stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="25"
+                transform="rotate(-90 60 60)" id="ringCircle"/>
+              <defs>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#f97316"/>
+                  <stop offset="100%" stop-color="#fdba74"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="ring-center"><span id="rateVal">92%</span><small>Attendance</small></div>
+          </div>
+          <div class="rate-legend">
+            <span class="leg-dot orange"></span><small>Present</small>
+            <span class="leg-dot gray"></span><small>Absent</small>
+          </div>
+        </div>
+
+        <div class="card today-card">
+          <h3>Today's Schedule</h3>
+          <div class="class-list">
+            <div class="class-item done"><div class="cls-info"><strong>Web Development</strong><small>09:00 AM</small></div><span class="cls-badge done">Done</span></div>
+            <div class="class-item active"><div class="cls-info"><strong>Database Systems</strong><small>11:00 AM</small></div><span class="cls-badge active-cls">Now</span></div>
+            <div class="class-item"><div class="cls-info"><strong>Cloud Computing</strong><small>01:00 PM</small></div><span class="cls-badge upcoming">Soon</span></div>
+            <div class="class-item"><div class="cls-info"><strong>Computer Architecture</strong><small>03:00 PM</small></div><span class="cls-badge upcoming">Soon</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="card chart-card">
+        <div class="card-head">
+          <h3>Monthly Attendance Trend</h3>
+          <span class="card-badge">2025–2026</span>
+        </div>
+        <canvas id="attendanceChart" style="max-height:220px"></canvas>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="actions-row">
+        <button class="action-card orange" onclick="window.location.href='../Session/session.html'">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+          <strong>Join Session</strong>
+          <small>Mark attendance</small>
+        </button>
+        <button class="action-card purple" onclick="window.location.href='./attendance_history.html'">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          <strong>View History</strong>
+          <small>Past attendance</small>
+        </button>
+        <button class="action-card blue" onclick="alert('Notifications coming soon!')">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <strong>Notifications</strong>
+          <small>Alerts & updates</small>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/Student-page/Dashboard/function.js"></script>
+</body>
+</html>

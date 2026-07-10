@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voice Verification</title>
+  <link rel="stylesheet" href="./Verification.css">
+</head>
+<body>
+
+<header class="top-bar">Voice Verification</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Voice Authentication</h2>
+
+    <div class="preview-box">
+      Microphone Recording Area
+    </div>
+
+    <button onclick="verifyVoice()">Start Voice Verification</button>
+    <button class="back-btn" onclick="goBack()">Back</button>
+
+    <p id="result"></p>
+  </div>
+</div>
+
+<footer class="bottom-bar">© 2026 Smart Attendance System</footer>
+
+<script>
+function verifyVoice(){
+  localStorage.setItem("voice", "1");
+
+  alert("Voice Verified ✅");
+  window.location.href = "./Verification.html";
+}
+
+function goBack(){
+  window.location.href="./Verification.html";
+}
+</script>
+
+</body>
+</html>

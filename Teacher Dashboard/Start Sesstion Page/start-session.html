@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Session | Hybrid Attendance System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="start-session.css">
+</head>
+<body>
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="logo-icon">HAS</div><span>Attendance</span></div>
+  <nav class="sidebar-nav">
+    <a href="../teacher-dashboard.html" class="nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
+    </a>
+    <a href="start-session.html" class="nav-item active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>Start Session
+    </a>
+    <a href="../Live Attendance Page/live-attendance.html" class="nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Live Attendance
+    </a>
+    <a href="../Attendance Record Page/attendance-history.html" class="nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>Records
+    </a>
+  </nav>
+  <button class="logout-btn" onclick="window.location.href='/Login-form/Login.html'">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout
+  </button>
+</div>
+
+<div class="main-content">
+  <header class="topbar">
+    <div class="topbar-left">
+      <h2>Start Attendance Session</h2>
+      <p>Configure and launch a new session</p>
+    </div>
+    <div id="sessionIndicator" class="session-indicator" style="display:none">
+      <span class="pulse-dot"></span><span id="sessionLabel">Session Active</span>
+    </div>
+  </header>
+
+  <div class="content-body">
+    <div class="session-grid">
+
+      <!-- Session form -->
+      <div class="card form-card">
+        <div class="card-head">
+          <div class="card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+          </div>
+          <h3>Session Configuration</h3>
+        </div>
+
+        <div class="form-group">
+          <label>Select Subject</label>
+          <div class="select-wrapper">
+            <select id="subjectSelect">
+              <option value="">-- Choose Subject --</option>
+              <option>Web Development</option>
+              <option>Database Systems</option>
+              <option>Cloud Computing</option>
+              <option>Computer Architecture</option>
+              <option>Mobile Application</option>
+              <option>Software Engineering</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Select Class</label>
+          <div class="select-wrapper">
+            <select id="classSelect">
+              <option value="">-- Choose Class --</option>
+              <option>BSCS 5th</option>
+              <option>BSCS 6th</option>
+              <option>BSCS 7th</option>
+              <option>BIT 4th</option>
+              <option>BIT 5th</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Attendance Method</label>
+          <div class="method-options">
+            <label class="method-opt">
+              <input type="radio" name="method" value="Both" checked>
+              <span class="method-card">
+                <span class="method-emoji">🔀</span>
+                <strong>Both</strong>
+                <small>Face + GPS</small>
+              </span>
+            </label>
+            <label class="method-opt">
+              <input type="radio" name="method" value="Face">
+              <span class="method-card">
+                <span class="method-emoji">👤</span>
+                <strong>Face</strong>
+                <small>Recognition</small>
+              </span>
+            </label>
+            <label class="method-opt">
+              <input type="radio" name="method" value="GPS">
+              <span class="method-card">
+                <span class="method-emoji">📍</span>
+                <strong>GPS</strong>
+                <small>Location</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="session-actions">
+          <button id="startBtn" class="btn-primary" onclick="startSessionNow()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+            Start Session
+          </button>
+          <button id="endBtn" class="btn-danger" onclick="endSessionNow()" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            End Session
+          </button>
+        </div>
+
+        <div id="statusBox" class="status-box" style="display:none">
+          <div class="status-icon" id="statusIcon"></div>
+          <div class="status-text" id="statusText"></div>
+        </div>
+      </div>
+
+      <!-- Active session info -->
+      <div class="card info-card" id="infoCard">
+        <div class="card-head">
+          <h3>Session Status</h3>
+        </div>
+        <div id="noSession" class="no-session">
+          <div class="no-session-icon">⏰</div>
+          <p>No active session</p>
+          <small>Configure and start a session to begin tracking attendance</small>
+        </div>
+        <div id="activeInfo" class="active-info" style="display:none">
+          <div class="info-row"><span>Subject</span><strong id="infoSubject">—</strong></div>
+          <div class="info-row"><span>Class</span><strong id="infoClass">—</strong></div>
+          <div class="info-row"><span>Method</span><strong id="infoMethod">—</strong></div>
+          <div class="info-row"><span>Started At</span><strong id="infoTime">—</strong></div>
+          <div class="info-row"><span>Duration</span><strong id="infoDuration">00:00</strong></div>
+          <div class="divider"></div>
+          <button class="btn-secondary" onclick="window.location.href='../Live Attendance Page/live-attendance.html'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View Live Attendance
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="start-session.js"></script>
+</body>
+</html>

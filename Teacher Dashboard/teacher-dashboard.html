@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard | Hybrid Attendance System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="teacher-dashboard.css">
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">HAS</div>
+    <span>Attendance</span>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="teacher-dashboard.html" class="nav-item active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+    <a href="./Start Sesstion Page/start-session.html" class="nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+      Start Session
+    </a>
+    <a href="./Live Attendance Page/live-attendance.html" class="nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Live Attendance
+    </a>
+    <a href="./Attendance Record Page/attendance-history.html" class="nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Records
+    </a>
+  </nav>
+  <button class="logout-btn" onclick="logout()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    Logout
+  </button>
+</div>
+
+<div class="main-content">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="menu-btn" id="menuBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div>
+        <h2>Teacher Dashboard</h2>
+        <p id="curDate"></p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="session-badge" id="sessionBadge" style="display:none">
+        <span class="pulse-dot"></span> Session Active
+      </div>
+      <div class="avatar">SA</div>
+    </div>
+  </header>
+
+  <div class="content-body">
+
+    <!-- Stats row -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="stat-info"><span class="stat-num" id="totalStudents">32</span><span class="stat-label">Total Students</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
+        <div class="stat-info"><span class="stat-num" id="presentCount">24</span><span class="stat-label">Present Today</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon red"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div class="stat-info"><span class="stat-num" id="absentCount">8</span><span class="stat-label">Absent Today</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
+        <div class="stat-info"><span class="stat-num">75%</span><span class="stat-label">Avg Attendance</span></div>
+      </div>
+    </div>
+
+    <div class="grid-two">
+      <!-- Chart card -->
+      <div class="card chart-card">
+        <div class="card-head">
+          <h3>Attendance Overview</h3>
+          <span class="card-badge">This Week</span>
+        </div>
+        <canvas id="attendanceChart" style="max-height:240px"></canvas>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="card">
+        <div class="card-head"><h3>Quick Actions</h3></div>
+        <div class="action-list">
+          <button class="action-btn" onclick="startSession()">
+            <div class="action-icon orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+            </div>
+            <div class="action-info"><strong>Start Session</strong><span>Begin attendance tracking</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+          <button class="action-btn" onclick="viewLive()">
+            <div class="action-icon green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="action-info"><strong>Live Attendance</strong><span>View real-time attendance</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+          <button class="action-btn" onclick="viewRecords()">
+            <div class="action-icon purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+            </div>
+            <div class="action-info"><strong>View Records</strong><span>Attendance history</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today's classes -->
+    <div class="card">
+      <div class="card-head"><h3>Today's Classes</h3><span class="card-badge">4 Scheduled</span></div>
+      <div class="class-table">
+        <div class="table-head"><span>Subject</span><span>Class</span><span>Time</span><span>Status</span></div>
+        <div class="table-row"><span>Web Development</span><span>BSCS 5th</span><span>09:00 AM</span><span class="badge done">Done</span></div>
+        <div class="table-row"><span>Database Systems</span><span>BSCS 6th</span><span>11:00 AM</span><span class="badge active-badge">Active</span></div>
+        <div class="table-row"><span>Cloud Computing</span><span>BSCS 7th</span><span>01:00 PM</span><span class="badge upcoming">Upcoming</span></div>
+        <div class="table-row"><span>Computer Architecture</span><span>BSCS 5th</span><span>03:00 PM</span><span class="badge upcoming">Upcoming</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="teacher-dashboard.js"></script>
+</body>
+</html>

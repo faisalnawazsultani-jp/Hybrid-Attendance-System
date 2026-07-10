@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GPS Verification</title>
+  <link rel="stylesheet" href="./Verification.css">
+</head>
+<body>
+
+<header class="top-bar">GPS Verification</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Location Verification</h2>
+
+    <div class="preview-box">
+      Location Status Area
+    </div>
+
+    <button onclick="verifyGPS()">Verify Location</button>
+    <button class="back-btn" onclick="goBack()">Back</button>
+
+    <p id="result"></p>
+  </div>
+</div>
+
+<footer class="bottom-bar">© 2026 Smart Attendance System</footer>
+
+<script>
+function verifyGPS(){
+  localStorage.setItem("gps", "1");
+
+  alert("GPS Verified ✅");
+  window.location.href = "./Verification.html";
+}
+
+function goBack(){
+  window.location.href="./Verification.html";
+}
+</script>
+
+</body>
+</html>

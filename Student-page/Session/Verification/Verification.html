@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start Verification</title>
+  <link rel="stylesheet" href="./Verify.css">
+</head>
+<script>
+
+  window.onload = function(){
+  if(!localStorage.getItem("sessionStarted")){
+    localStorage.setItem("sessionStarted", "true");
+
+    localStorage.removeItem("face");
+    localStorage.removeItem("voice");
+    localStorage.removeItem("gps");
+  }
+}
+
+ function finalCheck() {
+
+  const face = localStorage.getItem("face");
+  const voice = localStorage.getItem("voice");
+  const gps = localStorage.getItem("gps");
+
+  console.log("DEBUG:", face, voice, gps);
+
+  if (face === "1" && voice === "1" && gps === "1") {
+    alert("All Verified ✅");
+
+    window.location.href = "./attendance_verify.html";
+  } 
+  else {
+    alert("❌ Access Denied: Complete all 3 verifications first");
+  }
+}
+</script>
+
+<body>
+
+<header class="top-bar">
+  Hybrid Attendance System
+</header>
+
+<div class="container">
+
+  <div class="verification-card">
+    <h2>Start Verification</h2>
+    <p>Please choose a verification method to mark your attendance.</p>
+
+    <button onclick="goToFace()">Face Verification</button>
+    <button onclick="goToVoice()">Voice Verification</button>
+    <button onclick="goToGPS()">GPS Verification</button>
+
+    <button onclick="finalCheck()">Submit Attendance</button>
+
+    <button class="back-btn" onclick="goBack()">Back to Session</button>
+  </div>
+
+</div>
+
+<footer class="bottom-bar">
+  © 2026 Smart Attendance System
+</footer>
+
+<script>
+function goToFace(){
+  window.location.href = "./Face-verification.html";
+}
+
+function goToVoice(){
+  window.location.href = "./Voice-verification.html";
+}
+
+function goToGPS(){
+  window.location.href = "./GPS.html";
+}
+
+function goBack(){
+  window.location.href = "/Student-page/Session/session.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance History</title>
+  <link rel="stylesheet" href="./attendance.css">
+</head>
+<body>
+
+<header class="top-bar">Attendance History</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Your Attendance Record</h2>
+
+    <table>
+      <tr>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+
+      <tr>
+        <td>Mathematics</td>
+        <td>20 Feb 2026</td>
+        <td style="color:green;">Present</td>
+      </tr>
+
+      <tr>
+        <td>Physics</td>
+        <td>18 Feb 2026</td>
+        <td style="color:red;">Absent</td>
+      </tr>
+
+      <tr>
+        <td>Computer Science</td>
+        <td>15 Feb 2026</td>
+        <td style="color:green;">Present</td>
+      </tr>
+    </table>
+
+    <button onclick="goDashboard()">Back to Dashboard</button>
+  </div>
+</div>
+
+<footer class="bottom-bar">© 2026 Smart Attendance System</footer>
+
+<script>
+function goDashboard(){
+  window.location.href = "./student.html";
+}
+</script>
+
+<style>
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background: #f97316;
+  color: white;
+}
+</style>
+
+</body>
+</html>

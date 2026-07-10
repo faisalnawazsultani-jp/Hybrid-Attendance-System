@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management | Admin</title>
+  <link rel="stylesheet" href="./Style.css">
+</head>
+<body>
+<header class="top-bar">Hybrid Attendance System</header>
+
+<div class="dashboard-container">
+  <h1>User Management</h1>
+
+  <div class="form-container">
+    <h3>Add Student</h3>
+    <input type="text" placeholder="Student Name">
+    <input type="email" placeholder="Email">
+    <button class="orange-btn">Add Student</button>
+
+    <h3>Add Teacher</h3>
+    <input type="text" placeholder="Teacher Name">
+    <input type="email" placeholder="Email">
+    <button class="orange-btn">Add Teacher</button>
+  </div>
+
+  <div class="table-container">
+    <h3>Users List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Email</th><th>Role</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td><td>john@example.com</td><td>Student</td>
+          <td><button class="orange-btn">Edit</button> <button class="orange-btn">Delete</button></td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td><td>jane@example.com</td><td>Teacher</td>
+          <td><button class="orange-btn">Edit</button> <button class="orange-btn">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dashboard-buttons">
+    <button class="orange-btn" onclick="window.location.href='./Dashboard.html'">Back to Dashboard</button>
+  </div>
+</div>
+
+<footer class="bottom-bar">© 2026 Smart Attendance System | All Rights Reserved</footer>
+<script src="./Script.js"></script>
+</body>
+</html>

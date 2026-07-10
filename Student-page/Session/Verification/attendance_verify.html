@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Confirmed</title>
+  <link rel="stylesheet" href="/Student-page/Dashboard/attendance.css">
+</head>
+<body>
+
+<header class="top-bar">Hybrid Attendance System</header>
+
+<div class="container">
+  <div class="card success-card">
+    <h2>Attendance Marked Successfully</h2>
+    <p>Your attendance has been recorded for this session.</p>
+
+    <div class="details">
+      <p><strong>Subject:</strong> Mathematics</p>
+      <p><strong>Date:</strong> 20 Feb 2026</p>
+      <p><strong>Time:</strong> 10:00 AM - 11:00 AM</p>
+      <p><strong>Status:</strong> Present ✅</p>
+    </div>
+
+    <button onclick="goDashboard()">Back to Dashboard</button>
+  </div>
+</div>
+
+<footer class="bottom-bar">© 2026 Smart Attendance System</footer>
+
+<script>
+
+window.onload = function(){
+
+  const face = localStorage.getItem("face");
+  const voice = localStorage.getItem("voice");
+  const gps = localStorage.getItem("gps");
+
+  if(!(face && voice && gps)){
+    // agar koi bhi missing hai
+    alert("Access Denied! Complete all verifications first");
+
+    window.location.href = "./Verification.html";
+  }
+
+function goDashboard(){
+  window.location.href = "/Student-page/Dashboard/student.html";
+}}
+</script>
+
+</body>
+</html>

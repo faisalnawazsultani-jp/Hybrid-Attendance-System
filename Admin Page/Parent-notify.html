@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parent Notification</title>
+  <link rel="stylesheet" href="./notify.css">
+</head>
+<body>
+
+<header class="top-bar">Hybrid Attendance System</header>
+
+<div class="dashboard-container">
+  <h1>Parent Notification</h1>
+
+  <div class="form-container">
+    <h3>Send Notification</h3>
+
+    <input type="text" placeholder="Student Name">
+    <input type="text" placeholder="Parent Contact (Email / Phone)">
+    
+    <select>
+      <option>Select Status</option>
+      <option>Absent</option>
+      <option>Late</option>
+    </select>
+
+    <textarea placeholder="Message..." rows="4"></textarea>
+
+    <button class="orange-btn">Send Notification</button>
+  </div>
+
+  <div class="table-container">
+    <h3>Notification History</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Parent Contact</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Ali</td>
+          <td>ali_parent@gmail.com</td>
+          <td>Absent</td>
+          <td>10-Apr-2026</td>
+        </tr>
+        <tr>
+          <td>Ahmed</td>
+          <td>ahmed_parent@gmail.com</td>
+          <td>Late</td>
+          <td>11-Apr-2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dashboard-buttons">
+    <a href="./Dashboard.html" class="orange-btn">Back</a>
+  </div>
+</div>
+
+<footer class="bottom-bar">
+  © 2026 Smart Attendance System | All Rights Reserved
+</footer>
+
+</body>
+</html>

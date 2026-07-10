@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    Hybrid Attendance System
+  </header>
+
+  <div class="container">
+    <div class="form-box">
+      <h2>Create Account</h2>
+
+      <form id="registerForm">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+        <select required>
+          <option value="">Select Role</option>
+          <option>Student</option>
+          <option>Teacher</option>
+          <option>Admin</option>
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <p>Already have an account? <a href="/Login-form/Login.html">Login</a></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    © 2026 Hybrid Attendance System | All Rights Reserved
+  </footer>
+
+  <script src="Register.js"></script>
+</body>
+</html>
